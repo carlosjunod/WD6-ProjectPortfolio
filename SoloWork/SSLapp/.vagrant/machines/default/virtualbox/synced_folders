@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www/html":{"guestpath":"/var/www/html","hostpath":"/Users/carlosjunod/Documents/_Full Sail/WDD/18a_Server_Side_Languages/01_box","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/carlosjunod/Documents/_Full Sail/WDD/18a_Server_Side_Languages/01_box","disabled":false,"__vagrantfile":true}}}

@@ -1,0 +1,74 @@
+.separation{
+  margin: 50px 0px;
+}
+
+.active{
+  background-color: red;
+}
+
+#sign-up-form{
+  text-align: left;
+}
+
+#page-container{
+  position: relative;
+}
+
+#menu-background{
+  width: 100%;
+  height: 50px;
+  background: url('../img/bg-pattern.png'),linear-gradient(to left,#7b4397,#dc2430);
+}
+
+#login-page{
+  padding: 200px 0px;
+}
+
+#login-page h2.div-heading{
+  font-size: 6rem;
+}
+
+#login-page form a{
+  color: black;
+  text-decoration: underline;
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+#login-page form input{
+  padding: 10px;
+  color: black;
+  border: none;
+}
+
+#login-header{
+  margin-top:8px;
+}
+
+#login-header input{
+  border:none;
+  padding: 5px;
+}
+
+.affix #login-header input{
+  background-color: #eee;
+}
+
+.message{
+  position: absolute;
+  background-color: #61BD6D;
+  color: white;
+  padding: 10px;
+  box-shadow: 0px 0px 10px #000;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.card{
+  box-shadow: 0px 0px 10px rgba(0,0,0,.3);
+  padding: 15px;
+  background-color: white;
+  border-radius: 4px;
+  margin: 10px auto;
+}
