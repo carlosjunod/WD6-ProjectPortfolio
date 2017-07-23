@@ -1,0 +1,9 @@
+.main{
+  .cont{
+    @include xy-grid;
+  }
+
+  //to add a cell @include xy-cell(N);
+  // N widht of cell 1-12
+
+}
