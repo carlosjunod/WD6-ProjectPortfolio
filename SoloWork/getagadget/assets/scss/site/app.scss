@@ -1,9 +1,80 @@
 .main{
-  .cont{
+  @include xy-grid-container;
+
+  #header_page{
     @include xy-grid;
+
+    h1{
+      @include xy-cell(8)
+    }
+
+    p{
+      @include xy-cell(4)
+
+    }
   }
 
-  //to add a cell @include xy-cell(N);
-  // N widht of cell 1-12
+  .products-container{
+    @include xy-grid;
 
+    .product {
+      @include xy-cell(4)
+      border: 1px solid rgba(silver, .2);
+      box-shadow: 0px 0px 20px rgba(black, .1);
+
+      .cont{
+        @include xy-gutters($gutter-position: top bottom, $gutters: 2em);
+        @include xy-grid;
+
+        .desc{
+          @include xy-cell(9)
+          h1{
+            font-size: 1.5em;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(silver, .4);
+            padding-bottom: 5px;
+          }
+
+        }
+        .price{
+          @include xy-cell(3)
+          font-size: 2rem;
+          font-weight: bold;
+        }
+      }
+
+    .actions{
+      width: 100%;
+
+      .button-card{
+        float: left;
+        width: 50%;
+        margin: 0px;
+        background-color: $alert-color;
+        text-align: center;
+        padding: .8rem 0.2em;
+
+        &:hover{
+          background-color: lighten($alert-color, 5);
+        }
+
+        &.add{
+          background-color: $success-color;
+          &:hover{
+            background-color: lighten($success-color, 5);
+          }
+        }
+
+        a{
+          color: white;
+        }
+      }
+    }
+
+    }
+  }
+}
+
+i.fa{
+  margin-right: 4px;
 }
