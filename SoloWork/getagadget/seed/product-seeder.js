@@ -5,7 +5,7 @@ mongoose.connect('localhost:27017/getagadget');
 
 var product = [
   new Product({
-    imagePath: 'https://cdn.vox-cdn.com/thumbor/JBPZf10nFHjS9eEdKParS1O5r5Y=/0x0:2040x1360/1200x800/filters:focal(857x517:1183x843)/cdn.vox-cdn.com/uploads/chorus_image/image/53742289/jbareham_1492_170228_0024.0.0.jpg',
+    imagePath: 'https://a-static.mlcdn.com.br/1500x1500/console-nintendo-switch-joy-con-azul-joy-con-vermelho-nintendo/ncgames/3188/47cf7b4d89e01a2f63632afbc2b8fb4c.jpg',
     title: 'Nintendo switch',
     description: 'ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     price: 299
@@ -22,6 +22,20 @@ var product = [
     description: 'ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     price: 399
   }),
+
+  new Product({
+    imagePath: 'https://images-na.ssl-images-amazon.com/images/I/81f2Sm5hVYL._AC_SL1500_.jpg',
+    title: 'NES Classic',
+    description: 'ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    price: 99
+  }),
+
+  new Product({
+    imagePath: 'http://cdn.gamer-network.net/2017/usgamer/snes-classic.jpg',
+    title: 'SNES Classic',
+    description: 'ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    price: 199
+  })
 ];
 
 

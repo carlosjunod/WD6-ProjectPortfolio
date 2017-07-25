@@ -9,12 +9,13 @@ block content
     
     each product in products
       article.product
-        img(src=`${product.imagePath}`)
+        .image-product
+          img(src=`${product.imagePath}`)
+        h1=product.title
         .cont
           .desc
-            h1=product.title
             p= product.description
-          .price $ #{product.price}
+          .price $#{product.price}
         
         .actions
           div.button-card.add

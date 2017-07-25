@@ -5,7 +5,7 @@
     @include xy-grid;
 
     h1{
-      @include xy-cell(8)
+      @include xy-cell(4)
     }
 
     p{
@@ -19,54 +19,94 @@
 
     .product {
       @include xy-cell(4)
-      border: 1px solid rgba(silver, .2);
-      box-shadow: 0px 0px 20px rgba(black, .1);
+      @include xy-gutters($gutters:2em, $gutter-type:margin, $gutter-position: bottom);
+
+      border: 1px solid rgba(silver, .4);
+      // box-shadow: 10px 10px 16px rgba(black, .1);
+
+      .image-product{
+        max-height: 250px;
+        margin: 0px auto;
+        text-align: center;
+        padding: 10px 0px;
+
+
+        img{
+          max-height: 200px;
+        }
+      }
+
+      h1{
+        @include xy-cell(12)
+
+        @include xy-gutters($gutters:2em, $gutter-type:margin, $gutter-position: bottom);
+        font-size: 1.5em;
+        font-weight: bold;
+        border-bottom: 1px solid rgba(silver, .4);
+        padding-top: 5px;
+        border-top: 1px solid rgba(silver, .4);
+        padding-bottom: 5px;
+      }
 
       .cont{
-        @include xy-gutters($gutter-position: top bottom, $gutters: 2em);
+        border-top: 1px solid rgba(silver, .4);
+
         @include xy-grid;
 
         .desc{
-          @include xy-cell(9)
-          h1{
-            font-size: 1.5em;
-            font-weight: bold;
-            border-bottom: 1px solid rgba(silver, .4);
-            padding-bottom: 5px;
+          @include xy-gutters($gutters:1.1em, $gutter-type:padding, $gutter-position:  top bottom left right);
+          @include xy-cell($size:8)
+          p{
+            margin: 0px;
+            line-height: 1.2em;
           }
-
         }
         .price{
-          @include xy-cell(3)
+          @include xy-cell($size:4, $gutters:0)
           font-size: 2rem;
           font-weight: bold;
+          text-align: right;
+          color: $success-color;
+          border-left: 1px solid rgba(silver, .4);
+          text-align: center;
+
         }
       }
 
     .actions{
-      width: 100%;
+      border-top: 1px solid rgba(silver, .4);
+      @include xy-grid;
+
 
       .button-card{
-        float: left;
-        width: 50%;
-        margin: 0px;
-        background-color: $alert-color;
         text-align: center;
-        padding: .8rem 0.2em;
+        padding: 10px 0px;
 
-        &:hover{
-          background-color: lighten($alert-color, 5);
-        }
+        &.add {
+          @include xy-cell($size:8, $gutters:0)
+          border-right: 1px solid rgba(silver, .4);
 
-        &.add{
-          background-color: $success-color;
+          a{
+            color: $success-color;
+          }
+
           &:hover{
             background-color: lighten($success-color, 5);
+            a{ color: white; }
           }
         }
 
-        a{
-          color: white;
+        &.fav{
+          @include xy-cell($size:4, $gutters:0)
+          a{
+            color: $alert-color;
+          }
+
+          &:hover{
+            background-color: lighten($alert-color, 4);
+            a{ color: white; }
+          }
+
         }
       }
     }
