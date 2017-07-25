@@ -6,21 +6,22 @@ block content
     //- p Welcome to #{title}
   
   section.products-container
-    article.product
-      img(src='https://cdn.vox-cdn.com/thumbor/JBPZf10nFHjS9eEdKParS1O5r5Y=/0x0:2040x1360/1200x800/filters:focal(857x517:1183x843)/cdn.vox-cdn.com/uploads/chorus_image/image/53742289/jbareham_1492_170228_0024.0.0.jpg')
-      .cont
-        .desc
-          h1 Nintendo Swich
-          p
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        .price $399
-      
-      .actions
-        div.button-card.add
-          a(href="#") 
-            i.fa.fa-shopping-cart(aria-hidden='true')
-            | add to cart
-        div.button-card.fav
-          a(href="#") 
-            i.fa.fa-heart(aria-hidden='true')
-            | add favorite
+    
+    each product in products
+      article.product
+        img(src=`${product.imagePath}`)
+        .cont
+          .desc
+            h1=product.title
+            p= product.description
+          .price $ #{product.price}
+        
+        .actions
+          div.button-card.add
+            a(href="#") 
+              i.fa.fa-shopping-cart(aria-hidden='true')
+              | add to cart
+          div.button-card.fav
+            a(href="#") 
+              i.fa.fa-heart(aria-hidden='true')
+              | add favorite
