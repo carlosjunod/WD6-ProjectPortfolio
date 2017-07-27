@@ -3,19 +3,27 @@
     ul.menu
       li.menu-text getagadget
       li
-        a(href='#') Home
+        a(href='/') Home
   .top-bar-right
     ul.dropdown.menu(data-dropdown-menu='')
       li
         a(href='#')
           i.fa.fa-shopping-cart(aria-hidden='true')
           | Cart 
-      li
-        a(href='#')
-          i.fa.fa-user(aria-hidden='true')
-          | User Account
-        ul.menu.vertical
-          li
-            a(href='#') name
-          li
-            a(href='#') logout
+      if login
+        li
+          a(href='#')
+            i.fa.fa-user(aria-hidden='true')
+            | User Account
+          ul.menu.vertical
+            li
+              a(href='/user/profile') Profile
+            li
+              a(href='/user/logout') logout
+      else 
+        li
+          a(href='/user/signin')
+            i.fa.fa-user(aria-hidden='true')
+            | Login
+        li
+          a(href='/user/signup') create an account

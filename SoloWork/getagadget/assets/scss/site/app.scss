@@ -18,7 +18,7 @@
     @include xy-grid;
 
     .product {
-      @include xy-cell(4)
+      @include xy-cell(4);
       @include xy-gutters($gutters:2em, $gutter-type:margin, $gutter-position: bottom);
 
       border: 1px solid rgba(silver, .4);
@@ -37,14 +37,14 @@
       }
 
       h1{
-        @include xy-cell(12)
+        @include xy-cell(12);
+        @include xy-gutters($gutters:1.1em, $gutter-type:padding, $gutter-position: left right bottom);
 
-        @include xy-gutters($gutters:2em, $gutter-type:margin, $gutter-position: bottom);
         font-size: 1.5em;
         font-weight: bold;
-        border-bottom: 1px solid rgba(silver, .4);
+        // border-bottom: 1px solid rgba(silver, .4);
         padding-top: 5px;
-        border-top: 1px solid rgba(silver, .4);
+        // border-top: 1px solid rgba(silver, .4);
         padding-bottom: 5px;
       }
 
@@ -55,21 +55,20 @@
 
         .desc{
           @include xy-gutters($gutters:1.1em, $gutter-type:padding, $gutter-position:  top bottom left right);
-          @include xy-cell($size:8)
+          @include xy-cell($size:8);
           p{
             margin: 0px;
             line-height: 1.2em;
           }
         }
         .price{
-          @include xy-cell($size:4, $gutters:0)
+          @include xy-cell($size:4, $gutters:0);
           font-size: 2rem;
           font-weight: bold;
           text-align: right;
           color: $success-color;
           border-left: 1px solid rgba(silver, .4);
           text-align: center;
-
         }
       }
 
@@ -83,7 +82,7 @@
         padding: 10px 0px;
 
         &.add {
-          @include xy-cell($size:8, $gutters:0)
+          @include xy-cell($size:8, $gutters:0);
           border-right: 1px solid rgba(silver, .4);
 
           a{
@@ -97,7 +96,7 @@
         }
 
         &.fav{
-          @include xy-cell($size:4, $gutters:0)
+          @include xy-cell($size:4, $gutters:0);
           a{
             color: $alert-color;
           }
@@ -113,6 +112,32 @@
 
     }
   }
+}
+
+.errors{
+  @include xy-grid;
+  @include xy-gutters($gutters:2em, $gutter-type:margin, $gutter-position:  top bottom);
+
+
+  .error{
+    @include xy-gutters($gutters:1.1em, $gutter-type:padding, $gutter-position:  top bottom left right);
+
+
+
+    color:white;
+    background-color: $alert-color;
+  }
+
+}
+
+.user-cont{
+  @include xy-grid-container;
+
+  &>*{
+    @include xy-cell(6);
+    @include xy-cell-offset(3);
+  }
+
 }
 
 i.fa{

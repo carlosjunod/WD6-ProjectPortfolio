@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  section.user-cont
+    h1 Sign up 
+  
+    if messages
+      .errors
+        for msg in messages
+          .error 
+            i.fa.fa-exclamation-triangle(aria-hidden='true')
+            | #{msg}     
+    
+    form(action="/user/signup" method="post")
+      label(for="email") Email
+      input(type="email", name="email")#email
+      label(for="password") password
+      input(type="password", name="password")#password
+      input(type="hidden", name="_csrf" value=`${crfToken}`)
+      input(type="submit", value="sign up").button
+    
+    .msg Do you have an account? please #[a.someClass(href="/user/signin") sign in]
