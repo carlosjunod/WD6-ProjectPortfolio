@@ -7,9 +7,10 @@
   .top-bar-right
     ul.dropdown.menu(data-dropdown-menu='')
       li
-        a(href='#')
+        a(href='/shopping-cart')
           i.fa.fa-shopping-cart(aria-hidden='true')
-          | Cart 
+            if totalQty in this
+              .badge.warning= session.cart.totalQty
       if login
         li
           a(href='#')

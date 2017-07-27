@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  section#shopping-cart
+    h1 Shopping Cart
+    .items-list
+      ul
+        li.header
+          ul
+            li.img Image
+            li.name Product
+            li Quantity
+            li Total
+            li.add remove one
+            li.remove remove
+        if products
+          each product in products
+            li.product-list
+              ul
+                li.img
+                  img(src=`${product.item.imagePath}`)
+                li.name= product.item.title 
+                li= product.qty
+                li= product.price
+                li.add 
+                  i.fa.fa-minus-circle(aria-hidden='true')              
+                li.remove
+                  .fa.fa-trash(aria-hidden='true')   
+    .total
+      ul
+        li
+          ul
+            li 
+            li

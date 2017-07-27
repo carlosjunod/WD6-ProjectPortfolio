@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   #header_page
-    h1= title
+    //- h1= title
     //- p Welcome to #{title}
   
   section.products-container
@@ -19,7 +19,7 @@ block content
         
         .actions
           div.button-card.add
-            a(href="#") 
+            a(href=`/add-to-cart/${product._id}`) 
               i.fa.fa-shopping-cart(aria-hidden='true')
               | add to cart
           div.button-card.fav
