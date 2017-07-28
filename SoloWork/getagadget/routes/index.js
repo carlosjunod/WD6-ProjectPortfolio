@@ -35,9 +35,17 @@ router.get('/shopping-cart', (req,res,next)=>{
     products: cart.generateArray(),
     totalPrice: cart.totalPrice
   });
-
-
-
 })
+
+router.get('/checkout', (req,res,next)=>{
+  if (!req.session.cart) {
+    res.redirect('/shopping-cart');
+  }
+  var cart = new Cart(req.session.cart);
+  res.render('shop/checkout', {total:cart.totalPrice});
+})
+
+
+
 
 module.exports = router;

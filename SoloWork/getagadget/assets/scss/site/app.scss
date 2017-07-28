@@ -27,7 +27,7 @@ body{
 
     .is-active{
       ul{
-        border: none;       
+        border: none;
       }
       a{
         color: white;
@@ -197,7 +197,7 @@ body{
 
 #shopping-cart{
   @include xy-grid-container;
-  .items-list, h1, .total{
+  .items-list, h1, .total, #no-products{
     @include xy-cell(12)
 
     @include breakpoint(large) {
@@ -216,15 +216,11 @@ body{
 
   .items-list{
     ul{
-      list-style: none;
-      margin: 0px;
+
       &>li{
         @include breakpoint(large) {
           @include xy-gutters($gutters:1.1em, $gutter-type:padding, $gutter-position:  top bottom left right);
         }
-
-
-
         &.header{
           background-color: $success-color;
           color: white;
@@ -238,31 +234,159 @@ body{
           @include xy-grid;
           &>li{
             @include xy-cell(2);
+            text-align: center;
+
+            &.img{
+              @include xy-cell(2);
+            }
 
             &.name{
               @include xy-cell(3);
+              text-align: left;
             }
 
             &.add{
               @include xy-cell(2);
             }
-            &.img{
-              @include xy-cell(2);
-            }
 
             &.remove{
               @include xy-cell(1);
-
             }
+
+
 
           }
 
         }
       }
-
     }
   }
+
+  .total{
+    @include xy-grid;
+
+    ul{
+      @include xy-gutters($gutters:0);
+      @include xy-cell(12);
+      // background-color: red;
+    }
+
+    li{
+      @include breakpoint(large) {
+        // @include xy-cell(12);
+        @include xy-gutters($gutters:1.1em, $gutter-type:padding, $gutter-position:  top bottom);
+      }
+
+      &.summary-row{
+        text-align: center;
+        @include xy-cell-offset(10);
+        font-size: 1.5em;
+        font-weight: bold;
+        color: $primary-color;
+
+
+      }
+
+      &.checkout{
+        @include xy-cell(4);
+        @include xy-cell-offset(8);
+        a{
+          width: 100%;
+          background-color: $success-color;
+          margin: 0px;
+
+          &:hover{
+            background-color: darken($success-color,15);
+          }
+        }
+      }
+    }
+  }
+
 }
+// #SHOPING CART
+
+#checkout{
+  @include xy-grid;
+
+  h1, h4, form{
+    @include xy-cell(12)
+
+
+
+    @include breakpoint(large) {
+      @include xy-cell(6);
+      @include xy-cell-offset(3);
+    }
+  }
+
+  h1, h4{
+    line-height: 1em;
+  }
+
+  h1{
+    color: $primary-color;
+  }
+
+  h4{
+    color: $secondary-color;
+    border-bottom: 1px solid rgba(silver, .4);
+    @include xy-gutters($gutters:2em, $gutter-type:padding, $gutter-position: bottom);
+  }
+
+  form{
+    @include xy-grid;
+    @include xy-gutters($gutters:2em, $gutter-type:margin, $gutter-position:  top bottom);
+
+    label{
+      @include xy-cell(4);
+    }
+
+    input{
+      @include xy-cell(8);
+      &#submit{
+        @include xy-cell-offset(4);
+        @include button-style($success-color, $primary-color, $white);
+        padding: 1rem;
+        font-weight: bold;
+        border: 0px;
+      }
+    }
+
+    .row{
+      @include xy-cell(8);
+      @include xy-cell-offset(4);
+      // background-color: red;
+      @include xy-grid;
+
+
+      .col{
+        @include xy-cell(6);
+
+      }
+
+      label{
+        &#label-month, &#label-year{
+          @include xy-cell(12);
+        }
+      }
+
+      input{
+        &#month, &#year{
+          @include xy-cell(12);
+        }
+      }
+    }
+  }
+
+  .total{
+    color: $success-color;
+  }
+
+
+}
+// #chekout
+
 
 i.fa{
   margin-right: 4px;

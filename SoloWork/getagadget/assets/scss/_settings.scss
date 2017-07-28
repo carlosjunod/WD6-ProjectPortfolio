@@ -61,6 +61,7 @@
 //  56. Xy Grid
 
 @import 'util/util';
+@import url('https://fonts.googleapis.com/css?family=Muli:200,200i,400,400i,600,600i,700,900,900i');
 
 // 1. Global
 // ---------
@@ -69,9 +70,9 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #3498db,
+  primary: #4D4B8F,
   secondary: #767676,
-  success: #3adb76,
+  success: #55CBB3,
   warning: #f1c40f,
   alert: #e74c3c,
 );
@@ -82,7 +83,7 @@ $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: Muli,'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -130,7 +131,7 @@ $block-grid-max: 8;
 // ------------------
 
 $header-font-family: $body-font-family;
-$header-font-weight: $global-weight-normal;
+$header-font-weight: $global-weight-bold;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;

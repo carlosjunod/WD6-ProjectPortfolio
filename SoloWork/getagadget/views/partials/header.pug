@@ -9,8 +9,8 @@
       li
         a(href='/shopping-cart')
           i.fa.fa-shopping-cart(aria-hidden='true')
-            if totalQty in this
-              .badge.warning= session.cart.totalQty
+          if session.cart
+            .badge.warning= session.cart.totalQty
       if login
         li
           a(href='#')
