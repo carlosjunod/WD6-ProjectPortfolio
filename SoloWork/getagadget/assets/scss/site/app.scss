@@ -42,6 +42,15 @@ body{
   }
 }
 
+.message{
+ width: 100%;
+   .success{
+     background-color: $success-color;
+     color: $white;
+     padding: 1.6em;
+   }
+}
+
 .main{
   @include xy-grid-container;
 
@@ -344,13 +353,39 @@ body{
 
     input{
       @include xy-cell(8);
-      &#submit{
-        @include xy-cell-offset(4);
-        @include button-style($success-color, $primary-color, $white);
-        padding: 1rem;
-        font-weight: bold;
-        border: 0px;
+    }
+
+
+    button.btn-form{
+      @include xy-cell(8);
+      @include xy-cell-offset(4);
+      @include button-style($success-color, $primary-color, $white);
+      padding: 1rem;
+      font-weight: bold;
+      border: 0px;
+      // background-color: red;
+    }
+
+
+    #card-label{
+      font-size: $form-label-font-size;
+      color: $form-label-color;
+    }
+    #card-element{
+      @include xy-cell(8);
+      border: $fieldset-border;
+      padding: $fieldset-padding;
+      box-shadow: $input-shadow;
+      // margin: $fieldset-margin;
+      &:focus{
+        border: $input-shadow-focus;
       }
+
+    }
+
+    #card-errors{
+      @include xy-cell(8);
+      background-color: $alert-color;
     }
 
     .row{
@@ -386,7 +421,6 @@ body{
 
 }
 // #chekout
-
 
 i.fa{
   margin-right: 4px;

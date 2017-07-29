@@ -2,27 +2,26 @@ extends ../layout
 
 block content
   section#checkout
+    if errMsg
+      .error= errMsg
+    
     h1  Checkout
     h4 your total is #[span.total $#{total}]
-    form(action="/checkout" method="post")
+    
+    form#payment-form(action="/checkout" method="post")
       label.text-right.middle(for='name') Your Name
       input#name(type='text', placeholder='Your Name')
       label.text-right.middle(for='address') Address
       input#address(type='text', placeholder='Address')
       label.text-right.middle(for='carholder') Card Holder Name
       input#carholder(type='text', placeholder='Card Holder Name')
-      label.text-right.middle(for='cardnumber') Credit Card Number
-      input#cardnumber(type='text', placeholder='eg: 4242 4242 4242 4242')
-      .row
-        .col
-          label#label-month(for='month') Expiration month
-          input#month(type='text', placeholder='Exp Month')
-        .col
-          label#label-year(for='year') Expiration year
-          input#year(type='text', placeholder='Exp Year')
-      label.text-right.middle(for='cvc') CVC
-      input#cvc(type='text', placeholder='cvc')
-      input#submit(type="submit" value="buy now")
-      
+      label#card-label.text-right.middle(for='card-element')
+        | Credit or debit card
+      #card-element
+
+      button.btn-form buy now
+      #card-errors(role='alert')
+    
 
   script(src='https://js.stripe.com/v3/')
+  script(src='/javascripts/paymentValidation.js')   
