@@ -10,11 +10,11 @@ block content
     
     form#payment-form(action="/checkout" method="post")
       label.text-right.middle(for='name') Your Name
-      input#name(type='text', placeholder='Your Name')
+      input#name(type='text', placeholder='Your Name' name='name')
       label.text-right.middle(for='address') Address
-      input#address(type='text', placeholder='Address')
+      input#address(type='text', placeholder='Address' name='address')
       label.text-right.middle(for='carholder') Card Holder Name
-      input#carholder(type='text', placeholder='Card Holder Name')
+      input#carholder(type='text', placeholder='Card Holder Name' name='carholder')
       label#card-label.text-right.middle(for='card-element')
         | Credit or debit card
       #card-element

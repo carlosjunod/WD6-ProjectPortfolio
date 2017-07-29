@@ -23,10 +23,12 @@ block content
                   img(src=`${product.item.imagePath}`)
                 li.name= product.item.title 
                 li= product.qty
-                li.add 
-                  i.fa.fa-minus-circle(aria-hidden='true')              
+                li.add
+                  a(href=`reduce/${product.item._id}`)
+                    i.fa.fa-minus-circle(aria-hidden='true')              
                 li.remove
-                  .fa.fa-trash(aria-hidden='true')   
+                  a(href=`remove/${product.item._id}`)
+                    .fa.fa-trash(aria-hidden='true')   
                 li $ #{product.price}
       .total
         ul

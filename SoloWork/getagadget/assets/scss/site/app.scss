@@ -198,8 +198,45 @@ body{
   @include xy-grid-container;
 
   &>*{
-    @include xy-cell(6);
-    @include xy-cell-offset(3);
+    @include xy-cell(8);
+    @include xy-cell-offset(2);
+  }
+
+
+  #orders-list, .order-header{
+    @include xy-grid;
+    list-style: none;
+
+    &>li{
+      @include xy-cell(12);
+
+      @include breakpoint(large) {
+        @include xy-cell(4);
+      }
+
+      &.items{
+        ul{
+          li{
+            @include xy-cell(12);
+          }
+        }
+      }
+    }
+
+  }
+
+  .order-header{
+    .items, .total{
+      text-align: center;
+    }
+  }
+
+  #orders-list{
+    &>li{
+      &.total{
+        text-align: right;
+      }
+    }
   }
 
 }
@@ -417,7 +454,6 @@ body{
   .total{
     color: $success-color;
   }
-
 
 }
 // #chekout

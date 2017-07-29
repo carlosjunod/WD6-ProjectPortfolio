@@ -3,3 +3,21 @@ extends ../layout
 block content
   section.user-cont
     h1 user profile
+    h2 Orders    
+    
+    ul.order-header
+      li.name
+        h5 buyer
+      li.items Items
+      li.total Total
+    
+    each order in orders
+  
+      ul#orders-list
+        li.name
+          h5=order.name
+        li.items
+          ul
+            each cart in order.items
+              li= cart.item.title
+        li.total $#{order.cart.totalPrice}
