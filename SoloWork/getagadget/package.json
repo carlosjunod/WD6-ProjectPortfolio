@@ -18,6 +18,7 @@
     "express-validator": "^3.2.1",
     "install": "^0.10.1",
     "mongoose": "^4.10.8",
+    "mongoose-findorcreate": "^2.0.0",
     "morgan": "~1.8.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",

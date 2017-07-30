@@ -22,9 +22,7 @@ router.get('/profile', isLoggedIn, (req,res,next)=>{
       cart = new Cart(order.cart);
       order.items = cart.generateArray();
     })
-
-    console.log('💥!!!========', orders);
-    res.render('user/profile', {orders: orders});
+    res.render('user/profile', {orders: orders, user: req.user});
 
   });
   // res.render('user/profile');
@@ -77,7 +75,14 @@ router.post('/signin', passport.authenticate('local.signin', {
   }
 });
 
+// FACEBOOK
+router.get('/login-facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
 
+router.get('/facebook/callback',
+		passport.authenticate('facebook', {
+			successRedirect : '/user/profile',
+			failureRedirect : '/'
+		}));
 
 module.exports = router;
 
