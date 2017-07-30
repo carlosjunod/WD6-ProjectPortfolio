@@ -9,9 +9,22 @@ router.use(csrfProtection);
 
 var Order = require('../models/order');
 var Cart = require('../models/cart');
+var Wishlist = require('../models/wishlist');
+
 
 
 router.get('/profile', isLoggedIn, (req,res,next)=>{
+
+  var list=[];
+  Wishlist.find({user:req.user}, (err, el)=>{
+    console.log(el);
+    list.push(el);
+  })
+
+  console.log('MY LISTT!!!! ❤️📝', list);
+
+
+
   Order.find({user: req.user}, (err, orders)=>{
     if(err){
       return res.write('🤕 ERROR!');
@@ -22,7 +35,9 @@ router.get('/profile', isLoggedIn, (req,res,next)=>{
       cart = new Cart(order.cart);
       order.items = cart.generateArray();
     })
-    res.render('user/profile', {orders: orders, user: req.user});
+
+
+    res.render('user/profile', {orders: orders, user: req.user, wishlist: list});
 
   });
   // res.render('user/profile');

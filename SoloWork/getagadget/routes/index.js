@@ -4,16 +4,18 @@ var router = express.Router();
 var Cart = require('../models/cart');
 var Product = require('../models/product');
 var Order = require('../models/order');
+var Wishlist = require('../models/wishlist');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var succesMsg = req.flash('success')[0];
-  console.log('✅',succesMsg);
   var products = Product.find((err, docs)=>{
     res.render('shop/index', { title: 'Express', products: docs, succesMsg: succesMsg});
   });
 });
 
+// ADDING TO CART
 router.get('/add-to-cart/:id', function(req,res,next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart: {});
@@ -30,6 +32,7 @@ router.get('/add-to-cart/:id', function(req,res,next){
   });
 })
 
+// REDUCE BY 1 PRODUCT FROM CART
 router.get('/reduce/:id', (req,res,next)=>{
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart: {});
@@ -39,6 +42,7 @@ router.get('/reduce/:id', (req,res,next)=>{
   res.redirect('/shopping-cart');
 })
 
+// REMOVE PRODUCT FROM CART
 router.get('/remove/:id', (req,res,next)=>{
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart: {});
@@ -48,6 +52,7 @@ router.get('/remove/:id', (req,res,next)=>{
   res.redirect('/shopping-cart');
 })
 
+// SHOPPING CART
 router.get('/shopping-cart', (req,res,next)=>{
   if (!req.session.cart || req.session.cart.totalQty == 0) {
     res.render('shop/shopping-cart', {products: null});
@@ -60,6 +65,7 @@ router.get('/shopping-cart', (req,res,next)=>{
   });
 })
 
+//CHECKOUT GET
 router.get('/checkout', isLoggedIn, (req,res,next)=>{
   console.log('-------💵', req.session.cart.totalQty);
   if (!req.session.cart || req.session.cart.totalQty == 0) {
@@ -70,6 +76,7 @@ router.get('/checkout', isLoggedIn, (req,res,next)=>{
   res.render('shop/checkout', {total:cart.totalPrice, errMsg: errMsg});
 })
 
+//CHECKOUT POST
 router.post('/checkout', isLoggedIn, (req,res,next)=>{
   if (!req.session.cart) {
     res.redirect('/shopping-cart');
@@ -114,6 +121,48 @@ router.post('/checkout', isLoggedIn, (req,res,next)=>{
 
 
 })
+
+// Adding to Wishlist
+router.get('/add-whishlist/:id', isLoggedIn, (req,res,next)=>{
+  var productId = req.params.id;
+
+
+  Product.findById(productId, (err, pro)=>{
+    if(err){
+      console.log('ERRRRRRRRRR 🛒 WISH LIST', err);
+      return res.redirect('/');
+    }
+
+      Wishlist.findOne({products: pro, user: req.user}).populate('products').exec( (err, result) => {
+
+        if (result) {
+          console.log('------no saved 💔--------');
+          return res.redirect('/');
+        }
+
+        var myWishlist = new Wishlist({
+          user: req.user,
+          products: pro
+        })
+        console.log('myWishlist 💥💥💥💥💥💥💥💥', myWishlist);
+
+        myWishlist.save((err, result)=>{
+          if (err){
+            console.log('💀 ERROR WISHLIST ❤️', err);
+          }
+          console.log('🙃 saving WISHLIST ❤️!!!', result);
+          res.redirect('/');
+        });
+
+     })
+
+  });
+
+
+
+})
+
+
 
 
 module.exports = router;

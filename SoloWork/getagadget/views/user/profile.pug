@@ -23,3 +23,14 @@ block content
             each cart in order.items
               li= cart.item.title
         li.total $#{order.cart.totalPrice}
+
+        
+    h2 Favorites 
+      i.fa.fa-heart(aria-hidden='true')
+    ul#Favorites
+      if wishlist
+        each item in wishlist
+          //- li= item
+          each fav in item
+            li= fav.products.title
+              
